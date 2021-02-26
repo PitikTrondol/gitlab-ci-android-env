@@ -19,11 +19,14 @@ RUN apk add --update ca-certificates tar zip
 
 RUN curl -Lo android-sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_TOOLS}.zip
 RUN unzip -d android-sdk-linux android-sdk.zip && rm -v android-sdk.zip
-# RUN y | android-sdk-linux/tools/bin/sdkmanager --licenses
+RUN y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses
 RUN y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platforms;android-${ANDROID_COMPILE_SDK}"
 RUN y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platform-tools"
 RUN y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;${ANDROID_BUILD_TOOLS}"
+RUN set +o pipefail
 RUN y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses
+RUN set -o pipefail
+
 # RUN y | android-sdk-linux/tools/bin/sdkmanager "ndk;${ANDROID_NDK_TOOLS}"
 # RUN y | android-sdk-linux/tools/bin/sdkmanager "cmake;${CMAKE}"
 # RUN export ANDROID_HOME=android-sdk-linux/
