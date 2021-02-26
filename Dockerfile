@@ -22,5 +22,5 @@ RUN y | android-sdk-linux/tools/bin/sdkmanager "platform-tools"
 RUN y | android-sdk-linux/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}"
 # RUN y | android-sdk-linux/tools/bin/sdkmanager "ndk;${ANDROID_NDK_TOOLS}"
 # RUN y | android-sdk-linux/tools/bin/sdkmanager "cmake;${CMAKE}"
-RUN export ANDROID_HOME=$PWD/android-sdk-linux
-RUN export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
+RUN export ANDROID_HOME=android-sdk-linux/
+RUN export PATH=$PATH:android-sdk-linux/platform-tools/
