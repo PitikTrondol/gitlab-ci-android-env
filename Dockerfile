@@ -19,18 +19,18 @@ RUN apk add --update ca-certificates tar zip
 
 RUN curl -Lo android-sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_TOOLS}.zip
 RUN unzip -d android-sdk-linux android-sdk.zip && rm -v android-sdk.zip
+RUN y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses
 
-RUN mkdir -p ${ANDROID_HOME}/licenses/
-RUN echo "8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e" > $ANDROID_HOME/licenses/android-sdk-license
-RUN echo "84831b9409646a918e30573bab4c9c91346d8abd" > $ANDROID_HOME/licenses/android-sdk-preview-license
+# RUN mkdir -p ${ANDROID_HOME}/licenses/
+# RUN echo "8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e" > $ANDROID_HOME/licenses/android-sdk-license
+# RUN echo "84831b9409646a918e30573bab4c9c91346d8abd" > $ANDROID_HOME/licenses/android-sdk-preview-license
 
 RUN y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platforms;android-${ANDROID_COMPILE_SDK}"
-RUN y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platform-tools"
-RUN y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;${ANDROID_BUILD_TOOLS}"
-
-RUN set +o pipefail
 RUN y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses
-RUN set -o pipefail
+RUN y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platform-tools"
+RUN y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses
+RUN y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;${ANDROID_BUILD_TOOLS}"
+RUN y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses
 
 # RUN y | android-sdk-linux/tools/bin/sdkmanager "ndk;${ANDROID_NDK_TOOLS}"
 # RUN y | android-sdk-linux/tools/bin/sdkmanager "cmake;${CMAKE}"
