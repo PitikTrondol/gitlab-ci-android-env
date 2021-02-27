@@ -18,6 +18,7 @@ RUN apt-get install -qqy --no-install-recommends lib32z1
 RUN apt-get install -qqy --no-install-recommends curl
 RUN apt-get install -qqy --no-install-recommends unzip
 RUN apt-get install -qqy --no-install-recommends zip
+RUN apt-get install -qqy --no-install-recommends openvpn
 
 RUN curl -Lo android-sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_TOOLS}.zip
 RUN unzip android-sdk.zip && rm -v android-sdk.zip
