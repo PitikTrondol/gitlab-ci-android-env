@@ -10,9 +10,12 @@ ENV CMAKE "3.10.2.4988404"
 ENV PATH "$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools"
 
 RUN apt-get -q update
-RUN apt-get install -qqy --no-install-recommends libstdc++6
-RUN apt-get install -qqy --no-install-recommends openjdk8
-RUN apt-get install -qqy --no-install-recommends libc6-compat
+RUN apt-get install -qqy --no-install-recommends openjdk-8-jdk-headless
+RUN apt-get install -qqy --no-install-recommends libc6-i386
+RUN apt-get install -qqy --no-install-recommends lib32stdc++6
+RUN apt-get install -qqy --no-install-recommends lib32gcc1
+RUN apt-get install -qqy --no-install-recommends lib32ncurses6
+RUN apt-get install -qqy --no-install-recommends lib32z1
 RUN apt-get install -qqy --no-install-recommends curl
 RUN apt-get install -qqy --no-install-recommends unzip
 RUN apt-get install -qqy --no-install-recommends zip
