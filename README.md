@@ -12,3 +12,6 @@ Specification:
 * Java **openjdk-8-jdk-headless**
 * C Libraries **libc6-i386, lib32stdc++6, lib32gcc1, lib32ncurses6, lib32z1**
 * Other Libraries **curl, zip, unzip**
+
+Feel free to send me a suggestion or message.
+Thanks
