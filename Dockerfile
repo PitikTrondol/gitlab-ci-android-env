@@ -6,6 +6,7 @@ ENV ANDROID_BUILD_TOOLS "29.0.3"
 ENV ANDROID_SDK_TOOLS "6858069_latest"
 ENV ANDROID_HOME "/cmdline-tools"
 ENV PATH "$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools"
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -q update
 RUN apt-get install -qqy --no-install-recommends openjdk-8-jdk-headless
